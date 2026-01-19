@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riad Serenity - Moroccan Luxury Retreat</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            line-height: 1.6;
+        }
+         /* Navbar uniquement sur Home */
+        .navbar-home {
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .navbar-home .logo,.navbar-home .nav-links a {
+         color: rgba(245, 222, 196, 0.993);
+     }
+
+
+
+
+
+        /* Navigation */
+        nav {
+            background-color: #1e3575;
+            padding:20px 80px;
+            display:flex ;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top:0;
+            z-index: 1;
+        }
+
+        .logo {
+            color:rgba(245, 222, 196, 0.993);
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing:2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color :rgba(245, 222, 196, 0.993);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd58b;
+        }
+        /* Trait décoratif au-dessus des titres */
+        .about-text h2,
+        .section-header h2,
+        .dining-header h2,
+        .experiences-text h2,
+        .testimonials-header h2,
+        .contact-header h2 {
+           position: relative;
+           padding-top: 25px;
+        }
+
+        .about-text h2::before,
+        .section-header h2::before,
+        .dining-header h2::before,
+        .experiences-text h2::before,
+        .testimonials-header h2::before,
+        .contact-header h2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #f4a624; /* doré comme dans l’image */
+     }
+
+        /* Hero Section */
+       .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+                        url('assets/images/ai_1-poster.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background-color: #f4a624;
+            color: #1a1a1a;
+            padding: 18px 45px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .cta-button:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #f5f1ed;
+            padding: 100px 80px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+            color: #1a2332;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Suites Section */
+        .suites-section {
+            padding: 100px 80px;
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            color: #1a2332;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .suites-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .suite-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .suite-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .suite-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .suite-info {
+            padding: 25px;
+        }
+
+        .suite-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1a2332;
+        }
+
+        .suite-info p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Dining Section */
+        .dining-section {
+            padding: 100px 80px;
+            background-color: #f5f1ed;
+        }
+
+        .dining-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .dining-header h2 {
+            font-size: 42px;
+            color: #1a2332;
+            margin-bottom: 15px;
+        }
+
+        .dining-header p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .dining-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .dining-text h3 {
+            font-size: 32px;
+            color: #1a2332;
+            margin-bottom: 20px;
+        }
+
+        .dining-text p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .dining-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .spa-content {
+            margin-top: 80px;
+        }
+
+        /* Experiences Section */
+        .experiences-section {
+            padding: 100px 80px;
+            background-color: white;
+        }
+
+        .experiences-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .experiences-text h2 {
+            font-size: 42px;
+            color: #1a2332;
+            margin-bottom: 20px;
+        }
+
+        .experiences-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 80px;
+            background-color: #f5f1ed;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-header h2 {
+            font-size: 42px;
+            color: #1a2332;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #d4b896;
+        }
+
+        .testimonial-name h4 {
+            font-size: 20px;
+            color: #1a2332;
+        }
+
+        .testimonial-name p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 80px;
+            background-color: white;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .contact-header h2 {
+            font-size: 42px;
+            color: #1a2332;
+            margin-bottom: 15px;
+        }
+
+        .philosophy-text {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            color: #555;
+        }
+
+        .philosophy-text h3 {
+            font-size: 28px;
+            color: #1a2332;
+            margin-bottom: 20px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-form h3 {
+            font-size: 32px;
+            color: #1a2332;
+            margin-bottom: 20px;
+        }
+
+        .contact-form p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: Georgia, serif;
+            font-size: 15px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: #f4a624;
+            color: #1a1a1a;
+            padding: 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .submit-button:hover {
+            background-color: #e29e28;
+        }
+
+        .contact-map {
+            background-color: #e8e2d8;
+            border-radius: 8px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a2332;
+            color: rgb(248, 230, 230);
+            padding: 60px 80px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            font-size: 15px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-section a:hover {
+            color: #e7d7ca;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            background-color: #2a3545;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #f4a624;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2a3545;
+            color: #ecd9c9;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .about-content,
+            .dining-content,
+            .experiences-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .suites-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section,
+            .suites-section,
+            .dining-section,
+            .experiences-section,
+            .testimonials-section,
+            .contact-section,
+            footer {
+                padding: 60px 30px;
+            }
+             /* Explore link under suite card text (CSS only) */
+               .suite-info p {
+                    position: relative;
+                    padding-bottom: 30px;
+                }
+
+                .suite-info p::after {
+                  content: "Explore →";
+                   position: absolute;
+                   left: 0;
+                  bottom: 0;
+                  font-size: 14px;
+                  font-weight: 500;
+                 color: #f4a624;
+                 cursor: pointer;
+                 transition: all 0.3s ease;
+                }
+
+                .suite-card:hover .suite-info p::after {
+                   transform: translateX(6px);
+                   color: #e09515;
+                }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-home">
+        <div class="logo">Riad Serenity</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#suites">Suites</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>A Sanctuary of Moroccan<br>Elegance</h1>
+        <p>Luxury intertwined with nature and tradition</p>
+        <button class="cta-button">Discover Your Retreat</button>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <img src="assets/images/ai_2.png" alt="Riad Interior" class="about-image">
+            <div class="about-text">
+                <h2>Where Heritage Meets Harmony</h2>
+                <p>Nestled in the heart of Morocco's breathtaking landscape, Riad Serenity is more than a refuge—it is a journey into the soul of Moroccan culture. With architecture inspired by centuries-old traditions and modern comforts that embrace the essence of luxury, we invite you to experience a world where time slows and beauty unfolds at every turn.</p>
+                <p>At Riad Serenity, we believe in honoring the past while creating moments for the present. Our commitment is to quality and authenticity, from the hand-laid zellige tiles to the whisper-soft linens that grace our suites. We strive to make every stay not just memorable but transformative—where wellness, culture, and natural beauty converge.</p>
+                <p>Whether it is the tranquil riads intertwining nature with architecture or the immersive desert experiences we curate, Riad Serenity is a space crafted to nourish the spirit and rekindle your sense of wonder.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suites Section -->
+    <section id="suites" class="suites-section">
+        <div class="section-header">
+            <h2>Suites & Villas</h2>
+            <p>Each accommodation has been meticulously designed to blend time-honored Moroccan artistry with contemporary luxury.</p>
+        </div>
+        <div class="suites-grid">
+            <div class="suite-card">
+                <img src="assets/images/ai_3.png" alt="Royal Suite">
+                <div class="suite-info">
+                    <h3>Royal Suite</h3>
+                    <p>An opulent sanctuary where traditional Moroccan craftsmanship meets unparalleled comfort. Features a private terrace, marble bath, and hand-carved furnishings.</p>
+                </div>
+            </div>
+            <div class="suite-card">
+                <img src="assets/images/room-oasis.jpg" alt="Garden Villa">
+                <div class="suite-info">
+                    <h3>Garden Villa</h3>
+                    <p>Surrounded by lush gardens and tranquil fountains, this villa offers an intimate escape with traditional zellige tilework and modern amenities.</p>
+                </div>
+            </div>
+            <div class="suite-card">
+                <img src="assets/images/ai_5.png" alt="Desert Luxury Villa">
+                <div class="suite-info">
+                    <h3>Desert Luxury Villa</h3>
+                    <p>Experience the magic of the desert from this exclusive villa featuring panoramic views, private pool, and authentic Berber-inspired design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Section -->
+    <section class="dining-section">
+        <div class="dining-header">
+            <h2>Dining & Experiences</h2>
+            <p>Indulge in culinary artistry that celebrates Morocco's rich heritage, crafted with the finest local ingredients.</p>
+        </div>
+        <div class="dining-content">
+            <div class="dining-text">
+                <h3>Fine Dining</h3>
+                <p>Savor the flavors of Morocco in our exquisite restaurant, where master chefs prepare contemporary Maghrebi cuisine using traditional methods and locally sourced ingredients.</p>
+                <p>From aromatic tagines to delicate pastillas, each dish tells a story of Morocco's diverse culinary heritage. Dine under the stars in our courtyard or enjoy an intimate meal in our elegantly appointed dining room.</p>
+                <p>Accompanied by carefully selected wines from our extensive cellar, every dining experience at Riad Serenity is a celebration of taste and tradition.</p>
+            </div>
+            <img src="assets/images/ai_4.png" alt="Fine Dining" class="dining-image">
+        </div>
+
+        <div class="dining-content spa-content">
+            <img src="assets/images/hammam.jpg" alt="Spa & Wellness" class="dining-image">
+            <div class="dining-text">
+                <h3>Spa & Wellness</h3>
+                <p>Step into our sanctuary of Moroccan wellness traditions. Our hammam and spa offer authentic rituals passed down through generations, combined with modern therapeutic techniques.</p>
+                <p>Indulge in traditional savon noir treatments, argan oil massages, and rose petal baths. Our expert therapists create personalized wellness journeys designed to restore balance and rejuvenate your spirit.</p>
+                <p>From morning yoga sessions in our peaceful courtyard to evening meditation under the stars, we offer comprehensive programs that nurture mind, body, and soul.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences-section">
+        <div class="experiences-content">
+            <div class="experiences-text">
+                <h2>Desert Excursions</h2>
+                <p>Venture beyond the walls and discover Morocco's spellbinding landscapes. Our curated excursions take you into the heart of the Sahara, ancient kasbahs, and hidden oases.</p>
+                <p>Whether riding camels at sunset, sleeping under the endless stars, or exploring traditional Berber villages, each journey is crafted to create lasting memories and authentic connections with Morocco's timeless beauty.</p>
+                <p>Our expert guides ensure every excursion is safe, enriching, and tailored to your interests, whether you seek adventure, culture, or peaceful contemplation.</p>
+            </div>
+            <img src="assets/images/ai_5.png" alt="Desert Experience" class="experiences-image">
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="testimonials-header">
+            <h2>Guest Testimonials</h2>
+            <p>Hear from those who have experienced the magic of Riad Serenity</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar"></div>
+                    <div class="testimonial-name">
+                        <h4>Sarah Mitchell</h4>
+                        <p>London, UK</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "An unforgettable experience. From the moment we arrived until our last farewell, every detail exceeded our expectations. The hospitality was exceptional, the rooms were beautifully crafted, and the aromas permeating through the riad left us never wanting to leave."
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar"></div>
+                    <div class="testimonial-name">
+                        <h4>James Chen</h4>
+                        <p>Singapore</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Riad Serenity is a masterpiece. The blend of traditional Moroccan architecture with modern luxury is flawless. The staff anticipated our every need, and our desert excursion was the highlight of our trip. We can't wait to return!"
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar"></div>
+                    <div class="testimonial-name">
+                        <h4>Isabella Rosario</h4>
+                        <p>Barcelona, Spain</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "A magical oasis of tranquility and elegance. The commitment to sustainability and local culture is commendable. Every moment felt special, from morning tea on our terrace to traditional dinners under the stars. Pure luxury with soul."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-header">
+            <h2>Our Philosophy</h2>
+        </div>
+        <div class="philosophy-text">
+            <h3>At Riad Serenity</h3>
+            <p>luxury is not defined by excess—it's defined by meaning. By respecting our rich heritage, embracing environmental responsibility, and creating deeply personal experiences for our guests, we aim to craft moments that matter. Every detail, from the reclaimed wood in our architecture to the locally sourced ingredients in our kitchen, reflects our commitment to quality, authenticity, and the belief that luxury should enrich both the individual and the world around them.</p>
+            <p>We believe in eco-luxury—creating an oasis of comfort that cares for our planet, supports our local community, and honors the age-old principles of Moroccan hospitality.</p>
+            <p>Each visit to Riad Serenity contributes to our mission of environmental preservation, employing sustainable energy, sourcing local artisan partnerships.</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-form">
+                <h3>Reserve Your Stay</h3>
+                <p>Begin your journey to Riad Serenity for an unforgettable experience.</p>
+                <form>
+                    <div class="form-group">
+                        <label for="s">Name</label>
+                        <input id="s" type="text" placeholder="Name" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="e">Email</label>
+                        <input id="e" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="u">Check-in</label>
+                            <input  id="u" type="date" placeholder="Check-in" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="g">Check-out</label>
+                            <input  id="g" type="date" placeholder="Check-out" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Message</label>
+                        <textarea  id="guests" placeholder="Message"></textarea>
+                    </div>   
+                    <button type="submit" class="btn btn-warning">Reserve Your Stay</button>
+                </form>
+            </div>  
+            <div class="contact-map">
+                <iframe 
+                   src="https://www.google.com/maps?q=Marrakech&output=embed"
+                   width="100%" 
+                   height="100%" 
+                   style="border:0; border-radius:8px;"
+                   allowfullscreen="" 
+                   loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+<footer>
+    <div class="footer-content">
+
+        <!-- Column 1 -->
+        <div class="footer-section">
+            <h3>Riad Serenity</h3>
+            <p>Sanctuary of Moroccan elegance where luxury meets tradition.</p>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="#about">About</a>
+            <a href="#suites">Suites</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-section">
+            <h3>Connect</h3>
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Careers</a>
+            <a href="#">Press</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 Riad Serenity. All rights reserved.
+    </div>
+</footer>
+</body>
+</html>   
